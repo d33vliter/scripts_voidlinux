@@ -1,0 +1,21 @@
+#/usr/bin/env sh
+
+mango="0.6.8"
+libqtpas="1.2.12"
+libqtpas_=$(echo $libqtpas | sed 's|\.|_|g')
+goverlay="0.9.1"
+goverlay_=$(echo $goverlay | sed 's|\.|_|g')
+
+wget https://github.com/flightlessmango/MangoHud/releases/download/v${mango}/MangoHud-${mango}.r0.gefdcc6d.tar.gz -O MangoHud.tar.gz
+
+tar -xvzf MangoHud.tar.gz;cd MangoHud;./mangohud-setup.sh install;cd ..;rm -rf MangoHud*
+
+wget https://github.com/davidbannon/libqt5pas/releases/download/v${libqtpas}/libqt5pas_${libqtpas_}-2_amd64.tar.gz -O libqt5pas.tar.gz
+
+tar -xvzf libqt5pas.tar.gz;cd libqt5pas_*;sudo cp libQt5Pas.so.${libqtpas} /usr/lib/;sudo ln -s /usr/lib/libQt5Pas.so.${libqtpas} /usr/lib/libQt5Pas.so.1;rm -rf libqt5pas*;cd ..;rm -rf libqt5pas*
+
+xbps-install qt5-printsupport qt5-x11extras glu glxinfo lm_sensors -y
+
+wget https://github.com/benjamimgois/goverlay/releases/download/${goverlay}/goverlay_${goverlay_}.tar.xz -O goverlay.tar.xz
+
+mkdir goverlay;tar -xvf goverlay.tar.xz -C goverlay;rm -rf goverlay.tar.xz
