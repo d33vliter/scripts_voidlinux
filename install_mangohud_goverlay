@@ -1,7 +1,7 @@
 #/usr/bin/env sh
 
-mango="0.6.8"
-libqtpas="1.2.12"
+mango="0.6.9"
+libqtpas="1.2.15"
 libqtpas_=$(echo $libqtpas | sed 's|\.|_|g')
 goverlay="0.9.1"
 goverlay_=$(echo $goverlay | sed 's|\.|_|g')
